@@ -50,7 +50,7 @@ A connaître :
 passe
 
 ###  *(2) Configuration stricte du groupe `sudo`*
-- 3 essais max en cas de mot de passeerroné
+- 3 essais max en cas de mot de passe erroné
 - message d’erreur suite à un mauvais mot de passe lors de l’utilisation de sudo
 - actions utilisant sudo archivées (inputs et outputs)
 - log dans le dossier `/var/log/sudo/`

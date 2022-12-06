@@ -3,6 +3,10 @@
 LVM = Logical Volume Manager
 \
 APT = Advanced Packaging Tool
+\
+UFW = Uncomplicated Firewall
+\
+SSH = Secure Shell (ssh = client, sshd = server)
 
 **Differences between `apt` and `aptitude`**
 > Both are tools that interact with APT and allow you to install, remove and manage packages in Debian based Linux distributions.
@@ -235,7 +239,7 @@ service ssh restart
 
 Change the default port to 4242 (then restart the service)
 ```
-vim /etc/ssh/ssh_config
+vim /etc/ssh/sshd_config
 ```
 
 
@@ -274,7 +278,35 @@ ufw delete <number>
 
 ## **Connecting SSH Server**
 
-## **User management**
+1. Go to VirtualBox > Choose the VM > Select Settings
+
+2. Choose `Network` > `Adapter 1` > `Advanced` > `Port Forwarding` > Plus
+
+3. Enter values:
+	- Host port: 4242
+	- Guest Port: 4242
+
+4. Restart SSH server in VM
+	```
+	sudo systemctl restart ssh
+	```
+
+5. Check SSH status
+	```
+	sudo service sshd status
+	```
+
+6. Open a connection from Host
+	```
+	ssh dapereir@127.0.0.1 -p 4242
+	```
+
+7. Close connection
+	```
+	exit
+	```
+
+## **Password policy**
 
 ## **Script**
 
