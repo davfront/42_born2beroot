@@ -135,8 +135,39 @@ sudo ufw allow 4242
 	```
 	exit
 	```
+## **Password policy**
+### **Password complexity**
 
-## **User management**
+Install quality checking:
+```
+sudo apt install libpam-pwquality
+```
 
-## **Script**
+Edit file:
+```
+sudo vim /etc/pam.d/common-password
+```
 
+Add after `pam_pwquality.so`:
+```
+retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 usercheck=1 difok=7 enforce_for_root
+```
+
+### **Password expiration**
+
+Edit file:
+```
+sudo vim /etc/login.defs
+```
+
+Change (30 days max, 2 days min before change, warn 7 days before expiration):
+```
+PASS_MAX_DAYS	30
+PASS_MIN_DAYS	2
+PASS_WARN_AGE	7
+```
+
+Reboot:
+```
+sudo reboot
+```
