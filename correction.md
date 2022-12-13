@@ -70,10 +70,11 @@ de sécurité qui restreint les accès au système d'exploitation.
 # Simple setup
 
 ```bash
-Connect with lzaccome
+Connect with dapereir
 
 sudo ufw status
-sudo service ssh status
+sudo service sshd status
+sudo cat /etc/ssh/sshd_config
 head -n 2 /etc/os-release
 ```
 
@@ -88,13 +89,13 @@ sudo adduser pseudo
 
 Comment la politique des mots de passe a été mise en place ?
 
-Pour mettre en place la politique des mots de passe fort, il a fallu modifier certaines règles déjà établies dans /etc/login.defs :
+Pour mettre en place la politique des mots de passe fort, il a fallu modifier certaines règles déjà établies dans /etc/`login.defs` :
 
 - La date d'expiration est passée de 99999 à 30 jours.
 - La date minimum avant de pouvoir modifier le mot de passe est passée de 0 à 2 jours
 - Le message d'avertissement avant l'expiration du mot de passe est resté à 7 jours
 
-Il a fallu en plus installer le paquet libpam-pwquality permettant de configurer la résistance du mot de passe (nombre d'essai maxium, 
+Il a fallu en plus installer le paquet `libpam-pwquality` permettant de configurer la résistance du mot de passe (nombre d'essai maxium, 
 nombre de caractères minimum, interdiction d'utiliser le nom d'utilisateur ...)
 
 (vim /etc/pam.d/common-password)
